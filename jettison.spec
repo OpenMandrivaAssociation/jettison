@@ -40,7 +40,7 @@
 
 Name:           jettison
 Version:        1.0
-Release:        %mkrel 0.0.0
+Release:        %mkrel 0.0.1
 Epoch:          0
 Summary:        A JSON StAX Implementation
 License:        Apache License
@@ -65,6 +65,7 @@ BuildRequires:  maven2-plugin-install
 BuildRequires:  maven2-plugin-jar
 BuildRequires:  maven2-plugin-javadoc
 BuildRequires:  maven2-plugin-resources
+BuildRequires:  maven2-plugin-release
 BuildRequires:  maven2-plugin-surefire
 %endif
 Requires(post):    jpackage-utils >= 0:1.7.2
