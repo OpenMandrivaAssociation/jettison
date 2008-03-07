@@ -40,7 +40,7 @@
 
 Name:           jettison
 Version:        1.0
-Release:        %mkrel 0.0.1
+Release:        %mkrel 0.0.2
 Epoch:          0
 Summary:        A JSON StAX Implementation
 License:        Apache License
@@ -105,7 +105,7 @@ JSON based services.
 
 %package javadoc
 Summary:        Javadoc for %{name}
-Group:          Development/Documentation
+Group:          Development/Java
 
 %description javadoc
 %{summary}.
