@@ -40,7 +40,7 @@
 
 Name:           jettison
 Version:        1.0
-Release:        %mkrel 0.0.2
+Release:        %mkrel 0.0.3
 Epoch:          0
 Summary:        A JSON StAX Implementation
 License:        Apache License
