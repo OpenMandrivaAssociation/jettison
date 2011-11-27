@@ -1,6 +1,6 @@
 Name:           jettison
 Version:        1.3
-Release:        1
+Release:        3
 Summary:        A JSON StAX implementation
 Group:          Development/Java
 License:        ASL 2.0
