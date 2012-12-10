@@ -71,3 +71,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_javadocdir}/%{name}-%{version}/*
 
 
+
+
+%changelog
+* Sun Nov 27 2011 Guilherme Moro <guilherme@mandriva.com> 1.3-3
++ Revision: 734046
+- rebuild
+- imported package jettison
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Fri Mar 07 2008 Alexander Kurtakov <akurtakov@mandriva.org> 0:1.0-0.0.2mdv2008.1
++ Revision: 181216
+- fix javadoc package group
+- add maven2-plugin-release BR
+- import jettison
+
+
