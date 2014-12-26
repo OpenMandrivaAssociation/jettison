@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   jettison-1.3.3.tar.xz: 4aa7c809823b9b8fc11b22ce709cfe4a89e63e3d
+sources:
+  jettison-1.3.4.tar.xz: f41e47f6c5c7fedf3c35e8ccd17d7573391db77e

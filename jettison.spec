@@ -1,9 +1,9 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:           jettison
-Version:        1.3.3
-Release:        2.0%{?dist}
+Version:        1.3.4
+Release:        4.1
 Summary:        A JSON StAX implementation
-
+Group:		Development/Java
 License:        ASL 2.0
 URL:            http://jettison.codehaus.org/
 # svn export http://svn.codehaus.org/jettison/tags/jettison-1.3.3 jettison-1.3.3
@@ -11,30 +11,17 @@ URL:            http://jettison.codehaus.org/
 # tar cvJf jettison-1.3.3.tar.xz jettison-1.3.3
 Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Change the POM to use the version of woodstox that we have available:
 Patch0: %{name}-update-woodstox-version.patch
 
-%if 0%{?rhel} <= 5
-BuildRequires:     java-devel
-Requires:          java
-%else
-BuildRequires:     java-devel >= 1:1.6.0
-Requires:          java >= 1:1.6.0
-%endif
-BuildRequires:     jpackage-utils
-BuildRequires:     maven-local
-BuildRequires:     maven-compiler-plugin
-BuildRequires:     maven-install-plugin
-BuildRequires:     maven-jar-plugin
-BuildRequires:     maven-javadoc-plugin
-BuildRequires:     maven-release-plugin
-BuildRequires:     maven-resources-plugin
-BuildRequires:     woodstox-core
-BuildRequires:     stax2-api
-Requires:          jpackage-utils
-
+BuildRequires:  maven-local
+BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-release-plugin)
+BuildRequires:  mvn(org.codehaus:codehaus-parent:pom:)
+BuildRequires:  mvn(org.codehaus.woodstox:woodstox-core-asl)
+BuildRequires:  mvn(stax:stax-api)
 
 %description
 Jettison is a collection of Java APIs (like STaX and DOM) which read
@@ -60,37 +47,16 @@ This package contains the API documentation for %{name}.
 %pom_xpath_remove pom:build/pom:extensions
 
 %build
-# Disable the tests until BZ#796739 is fixed:
-mvn-rpmbuild -Dproject.build.sourceEncoding=UTF-8 -Dmaven.test.skip=true install javadoc:aggregate
-
+%mvn_build -f
 
 %install
-# Jar files:
-install -d -m 755 %{buildroot}%{_javadir}
-cp -p target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+%mvn_install
 
-# Javadoc files:
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
-cp -rp target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/.
-
-# POM files:
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-cp -p pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-
-# Dependencies map:
-%add_maven_depmap JPP-%{name}.pom %{name}.jar
-
-
-%files
+%files -f .mfiles
 %doc src/main/resources/META-INF/LICENSE
-%{_javadir}/%{name}.jar
-%{_mavenpomdir}/JPP-%{name}.pom
-%{_mavendepmapfragdir}/%{name}
 
-
-%files javadoc
+%files javadoc -f .mfiles-javadoc
 %doc src/main/resources/META-INF/LICENSE
-%{_javadocdir}/%{name}
 
 
 %changelog
