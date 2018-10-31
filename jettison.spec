@@ -1,7 +1,7 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:           jettison
 Version:        1.3.4
-Release:        4.2
+Release:        4.3
 Summary:        A JSON StAX implementation
 Group:		Development/Java
 License:        ASL 2.0
