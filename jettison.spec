@@ -5,7 +5,7 @@ Release:        4.3
 Summary:        A JSON StAX implementation
 Group:		Development/Java
 License:        ASL 2.0
-URL:            http://jettison.codehaus.org/
+URL:            https://jettison.codehaus.org/
 # svn export http://svn.codehaus.org/jettison/tags/jettison-1.3.3 jettison-1.3.3
 # rm -rf jettison-1.3.3/trunk
 # tar cvJf jettison-1.3.3.tar.xz jettison-1.3.3
